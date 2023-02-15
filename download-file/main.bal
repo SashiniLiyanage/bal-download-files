@@ -1,6 +1,9 @@
 import ballerina/io;
 import ballerina/http;
 
+configurable string SRC_URL = ?;
+configurable string DEST_PATH = ?;
+
 function downloadFile(string filePath, string url) returns error? {
     http:Client httpEP = check new (url);
     http:Response e = check httpEP->get("");
@@ -8,7 +11,7 @@ function downloadFile(string filePath, string url) returns error? {
 }
 
 public function main() {
-    error? status = downloadFile("../img/logo.png", "https://ballerina.io/img/branding/ballerina_logo_dgrey_png.png");
+    error? status = downloadFile(DEST_PATH, SRC_URL);
     if (status is error) {
         io:println(status);
     } else {
