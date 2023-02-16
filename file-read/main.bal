@@ -1,36 +1,28 @@
-// import ballerina/io;
-// import ballerina/http;
 import ballerina/log;
 import ballerina/jballerina.java;
+import ballerina/http;
 
-// configurable string SRC_URL = ?;
-// configurable string DEST_PATH = ?;
 configurable string PATH = ?;
-// function downloadFile(string filePath, string url) returns error? {
-//     http:Client httpEP = check new (url);
-//     http:Response e = check httpEP->get("");
-//     return io:fileWriteBytes(filePath, check e.getBinaryPayload());
-// }
 
 public isolated function getFile(handle product) returns handle = @java:Method {
     name: "getFile",
     'class: "org.wso2.internal.apps.license.manager.TraversePack"
 } external;
 
-public function main() {
-    
-    string? response = java:toString(getFile(java:fromString(PATH)));
+service / on new http:Listener(9096) {
 
-    if(response is string){
-        log:printInfo(response);
-    }else{
-        log:printError("error");
+    resource function get details() returns string {
+
+        string? response = java:toString(getFile(java:fromString(PATH)));
+
+        if(response is string){
+            log:printInfo(response);
+            return response;
+        }else{
+            log:printError("error");
+            return "error";
+        }
+        
     }
-
-    // error? status = downloadFile(DEST_PATH, SRC_URL);
-    // if (status is error) {
-    //     io:println(status);
-    // } else {
-    //     io:println("File downloaded successfully");
-    // }
+    
 }
