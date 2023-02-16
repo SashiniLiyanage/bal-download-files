@@ -1,21 +1,25 @@
 package org.wso2.internal.apps.license.manager;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class TraversePack {
 
     public static String getFile(String path){
-        
+    
         try {
-            InputStream is = new URL(path).openConnection().getInputStream();
-            int length = is.available();
-            return Integer.toString(length);
-        } catch (IOException e) {
-            return "IOException";
-        }
-        
+            Files.copy( new URL(path).openStream(),
+                Paths.get("C:/Users/WSO2/Documents/test/deleteme.ZIP"));
+                return ("done");
+            } catch (MalformedURLException e) {
+                return ("MalformedURLException");
+            } catch (IOException e) {
+              return ("IOException");
+            }
     }
-        
+
 }
+        
