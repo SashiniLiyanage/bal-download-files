@@ -13,8 +13,7 @@ public class TraversePack {
                 Paths.get(System.getProperty("user.dir")+"/deleteme.zip"));
                 return ("done");
             } catch (Exception e) {
-                e.getStackTrace();
-                return ("Exception");
+                return (e.toString());
             }
     }
 
