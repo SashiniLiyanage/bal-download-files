@@ -1,0 +1,7 @@
+[container.image]
+repository="file-read"
+name="file-read"
+tag="v0.1.0"
+
+[container.image.user]
+run_as="10014"

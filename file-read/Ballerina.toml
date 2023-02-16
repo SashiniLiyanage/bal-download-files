@@ -1,0 +1,14 @@
+[package]
+org = "wso2"
+name = "file_read"
+version = "0.1.0"
+distribution = "2201.3.1"
+
+[build-options]
+observabilityIncluded = true
+cloud="docker"
+
+[[platform.java11.dependency]]
+groupId = "TraversePack"
+artifactId = "TraversePack"
+version = "1.0-SNAPSHOT"
