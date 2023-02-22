@@ -1,5 +1,5 @@
 # Auto Generated Dockerfile
-FROM ballerina/jvm-runtime:1.0
+FROM adoptopenjdk/openjdk11-openj9:alpine-jre
 
 LABEL maintainer="dev@ballerina.io"
 COPY auth-native-2.5.0.jar /home/10014/jars/ 
@@ -75,6 +75,7 @@ COPY time-native-2.2.3.jar /home/10014/jars/
 COPY TraversePack-1.0-SNAPSHOT.jar /home/10014/jars/ 
 COPY url-native-2.2.3.jar /home/10014/jars/ 
 COPY wso2-file_read-0.1.0.jar /home/10014/jars/ 
+COPY wso2-file_read-13093316196786904706-observability-symbols.jar /home/10014/jars/ 
 RUN addgroup troupe \
     && adduser -S -s /bin/bash -g '10014' -G troupe -D 10014 \
     && apk add --update --no-cache bash \

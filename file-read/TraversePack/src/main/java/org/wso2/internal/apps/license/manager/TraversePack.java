@@ -25,7 +25,7 @@ public class TraversePack {
         try {
             File f = new File("/tmp/Storage/"+name);
             if(f.exists()){
-                return ("exists");
+                return ((f.getAbsolutePath()).toString());
             }else{
                 return ("doesn't exists");
             }
